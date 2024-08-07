@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <div className="header__logo">
-        <img src={logo} alt="Комита" />
+        <a href="/"><img src={logo} alt="Комита" /></a>
       </div>
       <div className="header__badge badge">
         <div className="badge__text-block">

@@ -1,0 +1,120 @@
+@import "variables";
+@import "./libs/normalize";
+
+
+body {
+   scrollbar-gutter: stable;
+   margin: 0;
+   overflow-x: hidden;
+   background: #EFF0EF;
+}
+body.stop-skroll {
+   overflow: hidden;
+}
+
+
+
+
+.container {
+   padding: 0 10px;
+   margin: 0 auto;
+   max-width: 1368px;
+
+   @media (max-width: $tablet) {
+      padding: 10px 0;
+      padding-top: 0;
+   }
+}
+
+.footer {
+   position: fixed;
+   bottom: 0;
+   width: 100vw;
+   left: 50%;
+   transform: translateX(-50%);
+   background: $dark-grey;
+   height: 30px;
+
+   @media (max-width: $tablet) {
+      height: auto;
+   }
+   
+   &__inner {
+      padding: 88px 20px;
+      margin: 0 auto;
+      max-width: 1368px;
+      
+      @media (max-width: $tablet) {
+         padding-top: 192px;
+         padding-bottom: 15px;
+      }
+   }
+   &__logo a:link, 
+   &__logo a:visited {
+      margin-bottom: 42px;
+      display: block;
+      font-size: 25px;
+      font-weight: 700;
+      color: $white;
+      text-decoration: none;
+   }
+   &__soc-icons {
+      display: flex;
+      gap: 34px;
+   }
+   &__soc-icon img {
+      transition: filter .3s ease-in-out;
+   }
+   &__soc-icon img:hover {
+      filter: brightness(1.5);
+   }
+   &__wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 320px;
+
+      @media (max-width: $sm-desktop) {
+         width: 220px;
+      }
+      @media (max-width: $tablet) {
+         margin-bottom: 35px;
+         width: auto;
+      }
+   }
+   &__copy {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: $white;
+      line-height: 19px;
+
+      @media (max-width: $tablet) {
+         position: static;
+         transform: none;
+         display: flex;
+         justify-content: center;
+      }
+   }
+}
+
+.burger-menu__icon {
+   display: none;
+   cursor: pointer;
+ }
+ 
+ .burger-menu__list {
+   display: block;
+ }
+ 
+ @media screen and (max-width: $tablet) {
+   .burger-menu__list {
+     display: none;
+   }
+ 
+   .burger-menu__icon {
+     display: block;
+   }
+ }
+ 

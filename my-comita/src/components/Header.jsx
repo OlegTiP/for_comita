@@ -1,14 +1,15 @@
-// import './scss/style.scss';
 import '../scss/variables.scss';
-import '../scss/style.scss'
+import '../scss/style.scss';
 
 import logo from '../img/comita-logo.svg';
 
-function App() {
+function Header() {
   return (
-    <>
+    <header className="header">
       <div className="header__logo">
-        <a href="/"><img src={logo} alt="Комита" /></a>
+        <a href="/">
+          <img src={logo} alt="Комита" />
+        </a>
       </div>
       <div className="header__badge badge">
         <div className="badge__text-block">
@@ -24,14 +25,14 @@ function App() {
           <path
             d="M12.647 1.1684L6.95327 6.83691L1.28476 1.1684"
             stroke="#8B77EF"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       </div>
-    </>
+    </header>
   );
 }
 
-export default App;
+export default Header;

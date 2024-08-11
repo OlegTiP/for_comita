@@ -12,31 +12,30 @@ import Identifier from './components/Identifier';
 import identifiers from './assets/identifier.json';
 
 function App() {
-   
-   const [searchValue, setSearchValue] = React.useState('');
+  const [searchValue, setSearchValue] = React.useState('');
 
-   const [checkboxStates, setCheckboxStates] = useState(
-      identifiers.reduce((acc, identifier) => {
-        acc[identifier.id] = false; 
-        return acc;
-      }, {})
-    );
+  const [checkboxStates, setCheckboxStates] = useState(
+    identifiers.reduce((acc, identifier) => {
+      acc[identifier.id] = false;
+      return acc;
+    }, {}),
+  );
 
   const handleCheckboxChange = (id) => {
-   setCheckboxStates((prevState) => ({
-     ...prevState,
-     [id]: !prevState[id],
-   }));
- };
+    setCheckboxStates((prevState) => ({
+      ...prevState,
+      [id]: !prevState[id],
+    }));
+  };
 
-   const activateAllCheckboxes = () => {
-      const updatedCheckboxStates = Object.keys(checkboxStates).reduce((acc, key) => {
-        acc[key] = true;
-        return acc;
-      }, {});
-  
-      setCheckboxStates(updatedCheckboxStates);
-    };
+  const activateAllCheckboxes = () => {
+    const updatedCheckboxStates = Object.keys(checkboxStates).reduce((acc, key) => {
+      acc[key] = true;
+      return acc;
+    }, {});
+
+    setCheckboxStates(updatedCheckboxStates);
+  };
 
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
@@ -51,45 +50,46 @@ function App() {
   return (
     <div className="container">
       {isPopupVisible && (
-      <div class="popup">
-        <div class="popup__icon">
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 32 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <rect width="32" height="32" rx="16" fill="#A1E4B8" />
-            <g clipPath="url(#clip0_2025_1012)">
+        <div class="popup">
+          <div class="popup__icon">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="16" fill="#A1E4B8" />
+              <g clipPath="url(#clip0_2025_1012)">
+                <path
+                  d="M25 16C25 18.3869 24.0518 20.6761 22.364 22.364C20.6761 24.0518 18.3869 25 16 25C13.6131 25 11.3239 24.0518 9.63604 22.364C7.94821 20.6761 7 18.3869 7 16C7 13.6131 7.94821 11.3239 9.63604 9.63604C11.3239 7.94821 13.6131 7 16 7C18.3869 7 20.6761 7.94821 22.364 9.63604C24.0518 11.3239 25 13.6131 25 16ZM20.5337 12.5912C20.4534 12.5112 20.3577 12.4481 20.2524 12.4059C20.1471 12.3636 20.0344 12.343 19.921 12.3453C19.8076 12.3476 19.6958 12.3728 19.5923 12.4193C19.4888 12.4658 19.3958 12.5327 19.3187 12.616L15.4116 17.5941L13.057 15.2384C12.8971 15.0893 12.6855 15.0082 12.4669 15.0121C12.2483 15.0159 12.0398 15.1045 11.8852 15.2591C11.7306 15.4136 11.642 15.6222 11.6382 15.8408C11.6343 16.0594 11.7155 16.2709 11.8645 16.4309L14.8412 19.4087C14.9214 19.4888 15.0169 19.5519 15.122 19.5942C15.2271 19.6366 15.3397 19.6573 15.453 19.6552C15.5662 19.6531 15.678 19.6282 15.7814 19.582C15.8849 19.5358 15.978 19.4692 16.0551 19.3863L20.5461 13.7725C20.6992 13.6133 20.7838 13.4004 20.7817 13.1796C20.7796 12.9587 20.691 12.7475 20.5349 12.5912H20.5337Z"
+                  fill="white"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_2025_1012">
+                  <rect width="18" height="18" fill="white" transform="translate(7 7)" />
+                </clipPath>
+              </defs>
+            </svg>
+          </div>
+          <div class="popup__text">
+            Пользователь добавлен в организацию и получил письмо, в котором может принять
+            приглашение
+          </div>
+          <div onClick={handleClosePopup} href="#" class="popup__close">
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 10 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg">
               <path
-                d="M25 16C25 18.3869 24.0518 20.6761 22.364 22.364C20.6761 24.0518 18.3869 25 16 25C13.6131 25 11.3239 24.0518 9.63604 22.364C7.94821 20.6761 7 18.3869 7 16C7 13.6131 7.94821 11.3239 9.63604 9.63604C11.3239 7.94821 13.6131 7 16 7C18.3869 7 20.6761 7.94821 22.364 9.63604C24.0518 11.3239 25 13.6131 25 16ZM20.5337 12.5912C20.4534 12.5112 20.3577 12.4481 20.2524 12.4059C20.1471 12.3636 20.0344 12.343 19.921 12.3453C19.8076 12.3476 19.6958 12.3728 19.5923 12.4193C19.4888 12.4658 19.3958 12.5327 19.3187 12.616L15.4116 17.5941L13.057 15.2384C12.8971 15.0893 12.6855 15.0082 12.4669 15.0121C12.2483 15.0159 12.0398 15.1045 11.8852 15.2591C11.7306 15.4136 11.642 15.6222 11.6382 15.8408C11.6343 16.0594 11.7155 16.2709 11.8645 16.4309L14.8412 19.4087C14.9214 19.4888 15.0169 19.5519 15.122 19.5942C15.2271 19.6366 15.3397 19.6573 15.453 19.6552C15.5662 19.6531 15.678 19.6282 15.7814 19.582C15.8849 19.5358 15.978 19.4692 16.0551 19.3863L20.5461 13.7725C20.6992 13.6133 20.7838 13.4004 20.7817 13.1796C20.7796 12.9587 20.691 12.7475 20.5349 12.5912H20.5337Z"
-                fill="white"
+                d="M0.80764 0.807518C0.865697 0.749314 0.934667 0.703135 1.0106 0.671627C1.08653 0.640119 1.16793 0.623901 1.25014 0.623901C1.33235 0.623901 1.41375 0.640119 1.48968 0.671627C1.56561 0.703135 1.63458 0.749314 1.69264 0.807518L5.00014 4.11627L8.30764 0.807518C8.36575 0.749408 8.43474 0.703313 8.51066 0.671864C8.58659 0.640415 8.66796 0.624229 8.75014 0.624229C8.83232 0.624229 8.9137 0.640415 8.98962 0.671864C9.06554 0.703313 9.13453 0.749408 9.19264 0.807518C9.25075 0.865628 9.29685 0.934615 9.32829 1.01054C9.35974 1.08646 9.37593 1.16784 9.37593 1.25002C9.37593 1.3322 9.35974 1.41357 9.32829 1.4895C9.29685 1.56542 9.25075 1.63441 9.19264 1.69252L5.88389 5.00002L9.19264 8.30752C9.25075 8.36563 9.29685 8.43461 9.32829 8.51054C9.35974 8.58646 9.37593 8.66784 9.37593 8.75002C9.37593 8.8322 9.35974 8.91357 9.32829 8.9895C9.29685 9.06542 9.25075 9.13441 9.19264 9.19252C9.13453 9.25063 9.06554 9.29672 8.98962 9.32817C8.9137 9.35962 8.83232 9.37581 8.75014 9.37581C8.66796 9.37581 8.58659 9.35962 8.51066 9.32817C8.43474 9.29672 8.36575 9.25063 8.30764 9.19252L5.00014 5.88377L1.69264 9.19252C1.63453 9.25063 1.56554 9.29672 1.48962 9.32817C1.4137 9.35962 1.33232 9.37581 1.25014 9.37581C1.16796 9.37581 1.08659 9.35962 1.01066 9.32817C0.934737 9.29672 0.86575 9.25063 0.80764 9.19252C0.74953 9.13441 0.703435 9.06542 0.671986 8.9895C0.640537 8.91357 0.624351 8.8322 0.624351 8.75002C0.624351 8.66784 0.640537 8.58646 0.671986 8.51054C0.703435 8.43461 0.74953 8.36563 0.80764 8.30752L4.11639 5.00002L0.80764 1.69252C0.749436 1.63446 0.703258 1.56549 0.671749 1.48956C0.640241 1.41363 0.624023 1.33223 0.624023 1.25002C0.624023 1.16781 0.640241 1.08641 0.671749 1.01048C0.703258 0.934545 0.749436 0.865575 0.80764 0.807518Z"
+                fill="#006742"
               />
-            </g>
-            <defs>
-              <clipPath id="clip0_2025_1012">
-                <rect width="18" height="18" fill="white" transform="translate(7 7)" />
-              </clipPath>
-            </defs>
-          </svg>
+            </svg>
+          </div>
         </div>
-        <div class="popup__text">
-          Пользователь добавлен в организацию и получил письмо, в котором может принять приглашение
-        </div>
-        <div onClick={handleClosePopup} href="#" class="popup__close">
-          <svg
-            width="10"
-            height="10"
-            viewBox="0 0 10 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M0.80764 0.807518C0.865697 0.749314 0.934667 0.703135 1.0106 0.671627C1.08653 0.640119 1.16793 0.623901 1.25014 0.623901C1.33235 0.623901 1.41375 0.640119 1.48968 0.671627C1.56561 0.703135 1.63458 0.749314 1.69264 0.807518L5.00014 4.11627L8.30764 0.807518C8.36575 0.749408 8.43474 0.703313 8.51066 0.671864C8.58659 0.640415 8.66796 0.624229 8.75014 0.624229C8.83232 0.624229 8.9137 0.640415 8.98962 0.671864C9.06554 0.703313 9.13453 0.749408 9.19264 0.807518C9.25075 0.865628 9.29685 0.934615 9.32829 1.01054C9.35974 1.08646 9.37593 1.16784 9.37593 1.25002C9.37593 1.3322 9.35974 1.41357 9.32829 1.4895C9.29685 1.56542 9.25075 1.63441 9.19264 1.69252L5.88389 5.00002L9.19264 8.30752C9.25075 8.36563 9.29685 8.43461 9.32829 8.51054C9.35974 8.58646 9.37593 8.66784 9.37593 8.75002C9.37593 8.8322 9.35974 8.91357 9.32829 8.9895C9.29685 9.06542 9.25075 9.13441 9.19264 9.19252C9.13453 9.25063 9.06554 9.29672 8.98962 9.32817C8.9137 9.35962 8.83232 9.37581 8.75014 9.37581C8.66796 9.37581 8.58659 9.35962 8.51066 9.32817C8.43474 9.29672 8.36575 9.25063 8.30764 9.19252L5.00014 5.88377L1.69264 9.19252C1.63453 9.25063 1.56554 9.29672 1.48962 9.32817C1.4137 9.35962 1.33232 9.37581 1.25014 9.37581C1.16796 9.37581 1.08659 9.35962 1.01066 9.32817C0.934737 9.29672 0.86575 9.25063 0.80764 9.19252C0.74953 9.13441 0.703435 9.06542 0.671986 8.9895C0.640537 8.91357 0.624351 8.8322 0.624351 8.75002C0.624351 8.66784 0.640537 8.58646 0.671986 8.51054C0.703435 8.43461 0.74953 8.36563 0.80764 8.30752L4.11639 5.00002L0.80764 1.69252C0.749436 1.63446 0.703258 1.56549 0.671749 1.48956C0.640241 1.41363 0.624023 1.33223 0.624023 1.25002C0.624023 1.16781 0.640241 1.08641 0.671749 1.01048C0.703258 0.934545 0.749436 0.865575 0.80764 0.807518Z"
-              fill="#006742"
-            />
-          </svg>
-        </div>
-      </div>
       )}
 
       <Header />
@@ -322,29 +322,41 @@ function App() {
                     className="directions__search-input"
                     placeholder="Идентификатор направления"
                     onChange={(event) => setSearchValue(event.target.value)}
-                     value={searchValue}
+                    value={searchValue}
                   />
                 </div>
-                <button onClick={activateAllCheckboxes} className="directions__activate-all js-activate-all">
+                <button
+                  onClick={activateAllCheckboxes}
+                  className="directions__activate-all js-activate-all">
                   Активировать все
                 </button>
               </div>
               <div className="directions__items">
-                {identifiers.filter(obj => {
-                  if (obj.identeficator.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())) {
-                     return true;
-                  }
-                  return false;
-                }).map((obj) => (
-                  <Identifier searchValue={searchValue} setSearchValue={setSearchValue}
-                    inn={obj.inn}
-                    identeficator={obj.identeficator}
-                    title={obj.title}
-                    id={obj.id}
-                    isChecked={checkboxStates[obj.id]}
-                     onCheckboxChange={handleCheckboxChange}
-                  />
-                ))}
+                {identifiers.filter((obj) => {
+                  return obj.identeficator
+                    .toLocaleLowerCase()
+                    .includes(searchValue.toLocaleLowerCase());
+                }).length > 0 ? (
+                  identifiers
+                    .filter((obj) => {
+                      return obj.identeficator
+                        .toLocaleLowerCase()
+                        .includes(searchValue.toLocaleLowerCase());
+                    })
+                    .map((obj) => (
+                      <Identifier
+                        key={obj.id}
+                        inn={obj.inn}
+                        identeficator={obj.identeficator}
+                        title={obj.title}
+                        id={obj.id}
+                        isChecked={checkboxStates[obj.id]}
+                        onCheckboxChange={handleCheckboxChange}
+                      />
+                    ))
+                ) : (
+                  <p>Ничего не найдено :(</p>
+                )}
               </div>
             </div>
             <div className="add-user__links links">
